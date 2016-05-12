@@ -33,6 +33,28 @@ $(document).ready(function () {
     });
   });
 
+  // Uso de método ajax()
+  $("#cinco-primeros").click(function () {
+    $.ajax({
+      url: "https://andreihelo-restful-api.herokuapp.com/students",
+      success: function (result, status, xhr) {
+        restablecerOpacidad();
+        /*
+         * Sabemos que la respuesta se trata de contenido en formato JSON y que
+         * consiste en un arreglo de objetos.
+         * El resultado ha sido convertido automáticamente a objeto JavaScript
+         * por lo que para desplegarlo solo como texto debemos convertirlo primero.
+         */
+        for (var i = 0; i < 5; i++) {
+          $("#contenedor").append(
+            "<p>" + result[i].registration_number + " " + result[i].name +
+            " " + result[i].last_name + "</p>"
+          );
+        }
+      }
+    });
+  });
+
   // Uso de método ajax() con método HTTP POST
   $("#guardar").click(function () {
     /*
