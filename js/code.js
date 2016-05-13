@@ -1,7 +1,7 @@
 $(document).ready(function () {
   // Uso de método load()
   $("#cargar").click(function () {
-    restablecerOpacidad();
+    reestablecerContenedor();
     $("#contenedor").load("http://andreihelo.github.io/").animate({opacity: "0.2"}, "slow");
   });
 
@@ -10,7 +10,7 @@ $(document).ready(function () {
     $.ajax({
       url: "https://andreihelo-restful-api.herokuapp.com/students",
       success: function (result, status, xhr) {
-        restablecerOpacidad();
+        reestablecerContenedor();
         /*
          * Sabemos que la respuesta se trata de contenido en formato JSON y que
          * consiste en un arreglo de objetos.
@@ -38,7 +38,7 @@ $(document).ready(function () {
     $.ajax({
       url: "https://andreihelo-restful-api.herokuapp.com/students",
       success: function (result, status, xhr) {
-        restablecerOpacidad();
+        reestablecerContenedor();
         /*
          * Sabemos que la respuesta se trata de contenido en formato JSON y que
          * consiste en un arreglo de objetos.
@@ -92,7 +92,7 @@ $(document).ready(function () {
   });
 
   // Reestablece la opacidad del contenedor.
-  function restablecerOpacidad() {
-    $("#contenedor").css("opacity", 1);
+  function reestablecerContenedor() {
+    $("#contenedor").empty().css("opacity", 1);
   }
 });
